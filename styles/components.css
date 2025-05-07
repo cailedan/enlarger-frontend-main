@@ -12,6 +12,15 @@
   scrollbar-color: var(--ui-kit-color-typography-quaternary) transparent;
 }
 
+/* 在小屏幕设备上减少内边距 */
+@media (max-width: 480px) {
+  .scrollContainer {
+    padding-top: var(--ui-kit-space-1);
+    padding-right: var(--ui-kit-space-1);
+    padding-bottom: var(--ui-kit-space-1);
+  }
+}
+
 .scrollContainer::-webkit-scrollbar {
   position: absolute;
   width: var(--ui-kit-base-unit);
@@ -40,18 +49,27 @@
 .imageCompareContainer {
   width: 100% !important;
   border-radius: 8px !important;
+  /* 添加硬件加速 */
+  transform: translateZ(0);
+  will-change: transform;
+
   img {
     object-fit: contain !important;
     width: 100% !important;
     max-height: 200px !important;
     border-radius: 8px !important;
     background-color: var(--ui-kit-color-neutral-low) !important;
+    /* 优化图像渲染 */
+    image-rendering: optimizeQuality;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
-  & > div {
+  &>div {
     max-height: 200px;
   }
-  [data-testid="container"] > :nth-last-child(1) > div {
+
+  [data-testid="container"]> :nth-last-child(1)>div {
     background-color: transparent !important;
     padding: 0 !important;
     bottom: 8px !important;
@@ -59,7 +77,8 @@
     transform: unset !important;
     right: 8px !important;
   }
-  [data-testid="container"] > :nth-last-child(2) > div {
+
+  [data-testid="container"]> :nth-last-child(2)>div {
     background-color: transparent !important;
     padding: 0 !important;
     bottom: 8px !important;
@@ -67,17 +86,23 @@
     left: 8px !important;
     transform: unset !important;
   }
-  [data-testid="container"] > :nth-last-child(3) {
-    & > :nth-child(1), & > :nth-child(3) {
+
+  [data-testid="container"]> :nth-last-child(3) {
+
+    &> :nth-child(1),
+    &> :nth-child(3) {
       background-color: var(--ui-kit-color-contrast-fore);
     }
 
-    & > :nth-child(2) {
-      border-color: var(--ui-kit-color-contrast-fore) !important;;
-      & > :nth-child(1) {
+    &> :nth-child(2) {
+      border-color: var(--ui-kit-color-contrast-fore) !important;
+      ;
+
+      &> :nth-child(1) {
         border-right-color: var(--ui-kit-color-contrast-fore) !important;
       }
-      & > :nth-child(2) {
+
+      &> :nth-child(2) {
         border-left-color: var(--ui-kit-color-contrast-fore) !important;
       }
     }
@@ -90,4 +115,52 @@
   max-height: 200px !important;
   border-radius: 8px !important;
   background-color: var(--ui-kit-color-neutral-low) !important;
+  /* 优化图像渲染 */
+  image-rendering: optimizeQuality;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* 添加硬件加速 */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* 处理后图像容器 */
+.imagePreviewContainer {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--ui-kit-color-neutral-low) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  min-height: 150px !important;
+  /* 添加硬件加速 */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.processedImage {
+  object-fit: contain !important;
+  width: 100% !important;
+  max-height: 300px !important;
+  border-radius: 8px !important;
+  /* 优化图像渲染 */
+  image-rendering: optimizeQuality;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* 添加硬件加速 */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* 小屏幕样式优化 */
+@media (max-width: 480px) {
+  .imagePreviewContainer {
+    min-height: 120px !important;
+  }
+
+  .processedImage,
+  .originImage {
+    max-height: 180px !important;
+  }
 }
