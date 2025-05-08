@@ -32,7 +32,7 @@ const ImageUploader: React.FC = () => {
                         {imageSourceType === "upload" && (
                             <FileInputItem
                                 onDeleteClick={resetState}
-                                label={file?.name}
+                                label={file?.name || "Image file"}
                             />
                         )}
                     </>

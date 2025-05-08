@@ -45,7 +45,7 @@ const ActionButtons: React.FC = () => {
                 stretch
                 variant="secondary"
                 type="submit"
-                disabled={!file || isPixelExceeded || isFileExceeded}
+                disabled={Boolean(isPixelExceeded || isFileExceeded)}
                 onClick={handleEnlargeImage}
             >
                 {isSmallScreen ? "放大" : "生成放大图像"}

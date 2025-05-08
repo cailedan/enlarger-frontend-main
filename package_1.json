@@ -33,8 +33,7 @@
     "react-compare-image": "^3.4.0",
     "react-compare-slider": "^3.1.0",
     "react-dom": "^18.3.1",
-    "react-helmet": "^6.1.0",
-    "zustand": "^5.0.4"
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.6.0",
